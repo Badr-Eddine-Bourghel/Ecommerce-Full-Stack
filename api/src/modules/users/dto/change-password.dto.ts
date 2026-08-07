@@ -5,11 +5,11 @@ import { IsNotEmpty, IsString, MinLength, Matches } from 'class-validator';
 
 export class ChangePasswordDto {
   @ApiProperty({
-    description: 'New password for the user',
-    example: 'NewP@ssw0rd!',
+    description: 'Current password for the user',
+    example: 'CurrentP@ssw0rd!',
   })
   @IsString()
-  @IsNotEmpty({ message: 'New pasword must not be empty' })
+  @IsNotEmpty({ message: 'Current pasword must not be empty' })
   currentPassword: string;
 
   @ApiProperty({
