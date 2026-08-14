@@ -1,17 +1,19 @@
-// DTO for querying categories
+// DTO for querying product
 
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsBoolean, IsOptional, IsString, Min } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
-import {
-  IsBoolean,
-  IsNumber,
-  IsOptional,
-  IsString,
-  Min,
-} from 'class-validator';
 
-export class QueryCategoryDto {
-  @ApiPropertyOptional({
+export class QueryProductDto {
+  @ApiProperty({
+    description: 'Filter by category',
+    example: 'electronics',
+  })
+  @IsString()
+  @IsOptional()
+  category?: string;
+
+  @ApiProperty({
     description: 'Filter by active status',
     example: true,
   })
@@ -24,35 +26,33 @@ export class QueryCategoryDto {
   @IsOptional()
   isActive?: boolean;
 
-  @ApiPropertyOptional({
-    description: 'Search term to filter categories by name or description',
-    example: 'electronics',
+  @ApiProperty({
+    description: 'Search product by name',
+    example: 'headphones',
   })
-  @IsOptional()
   @IsString()
+  @IsOptional()
   search?: string;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Page number for pagination',
     example: 1,
+    minimum: 1,
     default: 1,
-    minimum: 1,
   })
   @Type(() => Number)
-  @IsNumber()
   @Min(1)
   @IsOptional()
-  page = 1;
+  page: number = 1;
 
-  @ApiPropertyOptional({
-    description: 'Number of items per page for pagination',
+  @ApiProperty({
+    description: 'Page number for pagination',
     example: 10,
-    default: 10,
     minimum: 1,
+    default: 10,
   })
   @Type(() => Number)
-  @IsNumber()
   @Min(1)
   @IsOptional()
-  limit = 10;
+  limit: number = 10;
 }
