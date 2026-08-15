@@ -81,7 +81,7 @@ export class ProductsService {
     });
 
     return {
-      data: products.map((products) => this.formatProduct(products)),
+      data: products.map((product) => this.formatProduct(product)),
       meta: {
         total,
         page,

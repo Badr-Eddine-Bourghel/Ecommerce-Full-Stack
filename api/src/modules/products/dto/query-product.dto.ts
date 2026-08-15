@@ -7,7 +7,7 @@ import { Transform, Type } from 'class-transformer';
 export class QueryProductDto {
   @ApiProperty({
     description: 'Filter by category',
-    example: 'electronics',
+    example: 'Electronics',
   })
   @IsString()
   @IsOptional()
