@@ -28,7 +28,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { GetUser } from 'src/common/decorators/get-user.decorator';
 import { ChangePasswordDto } from './dto/change-password.dto';
 
-@ApiTags('users')
+@ApiTags('Users')
 @ApiBearerAuth('JWT-auth')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('users')
